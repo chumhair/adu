@@ -1,0 +1,43 @@
+#ifndef MAP_H
+#define MAP_H
+
+#define MAP_SZ    256
+
+template<typename key_T, typename value_T>
+class map
+{
+private:
+
+    key_T*        m_keys        = new key_T[MAP_SZ];
+    value_T*    m_values    = new value_T[MAP_SZ];
+    unsigned    m_size        = 0;
+
+public:
+
+    ~map()
+    {
+        delete[] m_keys;
+        delete[] m_values;
+    }
+
+    bool operator!=(key_T)
+    {
+        return key_T;
+    }
+
+    void insert(key_T key, value_T value)
+    {
+        m_keys[m_size]        = key;
+        m_values[m_size]    = value;
+        m_size++;
+    }
+
+    value_T* find(key_T key) const
+    {
+        int i;
+        for (i = 0; m_keys[i] != key; i++);
+        return &m_values[i];
+    }
+};
+
+#endif // MAP_H
